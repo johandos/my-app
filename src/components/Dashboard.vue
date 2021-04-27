@@ -4,12 +4,12 @@
     <div class="container mrgnbtm">
           <div class="row">
             <div class="col-md-4">
-                <DisplayBoard :numberOfUsers="numberOfUsers" @getAllUsers="getAllUsers()" />
+                <DisplayBoard :numberOfBeers="numberOfBeers" @getAllBeers="getAllBeers()" />
             </div>
           </div>
     </div>
     <div class="row mrgnbtm">
-        <Users v-if="users.length > 0" :users="users" />
+        <Beers v-if="beers.length > 0" :beers="beers" />
     </div>
   </div>
 </template>
@@ -17,33 +17,32 @@
 <script>
 import Header from './Header.vue'
 import DisplayBoard from './DisplayBoard.vue'
-import Users from './Users.vue'
-import { getAllUsers } from '../services/UserService'
+import Beers from './Beers.vue'
+import { getAllBeers } from '../services/BeerService'
 
 export default {
   name: 'Dashboard',
   components: {
     Header,
     DisplayBoard,
-    Users
+    Beers
   },
   data() {
       return {
-          users: [],
-          numberOfUsers: 0
+          beers: [],
+          numberOfBeers: 0
       }
   },
   methods: {
-    getAllUsers() {
-      getAllUsers().then(response => {
-        console.log(response)
-        this.users = response.results
-        this.numberOfUsers = this.users.length
+    getAllBeers() {
+      getAllBeers().then(response => {
+        this.beers = response
+        this.numberOfBeers = this.beers.length
       })
     },
   },
   mounted () {
-    this.getAllUsers();
+    this.getAllBeers();
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="display-board">
         <div class="number">
-        {{numberOfUsers}}
+        {{numberOfBeers}}
         </div>
         <div class="btn">
 
@@ -12,10 +12,10 @@
 <script>
     export default {
         name: 'DisplayBoard',
-        props: ['numberOfUsers'],
+        props: ['numberOfBeers'],
         methods: {
-            getAllUsers() {
-                this.$emit('getAllUsers')
+            getAllBeers() {
+                this.$emit('getAllBeers')
             }
         }
     }
